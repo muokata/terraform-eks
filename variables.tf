@@ -1,6 +1,7 @@
 variable "aws_key_name" {}
 variable "key_file_path" {}
 variable "profile" {}
+#variable "muokata_net_zone_id" {}
 
 variable "aws_region" {
   description = "AWS region to launch servers."
@@ -20,6 +21,6 @@ variable "server_count" {
 
 variable "dns_zones" {
   default = {
-    muokatanet= "Z3KQW9QGU5QG6C"
+    muokatanet = "Z3BC0R4ZIT2AHT"
   }
 }

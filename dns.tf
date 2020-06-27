@@ -1,7 +1,7 @@
 provider "aws" {
+  profile = "default"
   alias   = "route53-MUOKATANET" # provider's name
   region  = "us-east-1"
-  profile = "muokatanet"
 }
 
 #######################################
@@ -10,14 +10,14 @@ provider "aws" {
 
 resource "aws_route53_zone" "eks-muokata" {
   provider = aws.route53-MUOKATANET
-  name    = "eks.muokata.com"
-  comment = "Managed by Terraform"
+  name     = "eks.muokata.net"
+  comment  = "Managed by Terraform"
 }
 
 resource "aws_route53_record" "eks-muokata-ns" {
   provider = aws.route53-MUOKATANET
-  zone_id  = var.dns_zones["muokata"]
-  name     = "eks.muokata.com"
+  zone_id  = var.dns_zones["muokatanet"]
+  name     = "eks.muokata.net"
   type     = "NS"
   ttl      = "30"
 
