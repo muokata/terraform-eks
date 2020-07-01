@@ -68,6 +68,13 @@ resource "aws_security_group" "bastion-client-eks" {
     cidr_blocks = ["67.71.177.28/32", "67.71.23.171/32", "165.22.226.153/32"]
   }
 
+  ingress {
+    from_port   = 5820
+    to_port     = 5820
+    protocol    = "tcp"
+    cidr_blocks = ["67.71.177.28/32", "67.71.23.171/32", "165.22.226.153/32"]
+  }
+
   egress {
     from_port   = 0
     to_port     = 0
