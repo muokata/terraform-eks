@@ -1,12 +1,12 @@
 Host bastion-eks-prod-0
   Port 5820
   user ubuntu
-  IdentityFile <ssh_file_file_path>
-  Hostname  %h.eks.muokata.com
+  IdentityFile ~/SSHKEYS/k8s.pem
+  Hostname  %h.eks.muokata.net
 
 Host *.internal
   User ec2-user
   Port 22
-  IdentityFile <ssh_file_file_path>
+  IdentityFile ~/SSHKEYS/k8s.pem
   ProxyJump bastion-eks-prod-0
 
