@@ -20,9 +20,9 @@ module "eks" {
     {
       name                          = "worker-group-1"
       instance_type                 = "t3a.medium"
-      userdata_template_file        = "user_data/userdata.sh.tpl"
+      #userdata_template_file        = "user_data/userdata.sh.tpl"
       iam_instance_profile_name     = aws_iam_instance_profile.muokata-eks-worker-profile.name
-      pre_userdata                  = data.template_cloudinit_config.cloudinit-worker-group-1.rendered
+      #pre_userdata                  = data.template_cloudinit_config.cloudinit-worker-group-1.rendered
       asg_desired_capacity          = 3
       asg_min_size                  = 3
       asg_max_size                  = 5
@@ -44,10 +44,10 @@ module "eks" {
     },
     {
       name                          = "worker-group-2"
-      instance_type                 = "m5a.large"
-      userdata_template_file        = "user_data/userdata.sh.tpl"
+      instance_type                 = "t3a.medium"
+      #userdata_template_file        = "user_data/userdata.sh.tpl"
       iam_instance_profile_name     = aws_iam_instance_profile.muokata-eks-worker-profile.name
-      pre_userdata                  = data.template_cloudinit_config.cloudinit-worker-group-2.rendered
+      #pre_userdata                  = data.template_cloudinit_config.cloudinit-worker-group-2.rendered
       asg_desired_capacity          = 0
       asg_min_size                  = 0
       asg_max_size                  = 0

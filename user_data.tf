@@ -9,6 +9,7 @@ data "template_file" "init-worker-eks" {
   }
 }
 
+/*
 data "template_file" "shell-worker-group-1" {
   template = file("user_data/worker-group-1.sh")
 }
@@ -58,3 +59,4 @@ data "template_cloudinit_config" "cloudinit-worker-group-2" {
     content = data.template_file.init-worker-eks.rendered
   }
 }
+*/
