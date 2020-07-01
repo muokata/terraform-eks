@@ -39,3 +39,12 @@ resource "aws_route53_record" "bastion-eks-muokata" {
   ttl      = "300"
   records  = [element(aws_eip.bastion.*.public_ip, count.index)]
 }
+
+resource "aws_route53_record" "docs" {
+  provider = aws.route53-MUOKATANET
+  zone_id  = aws_route53_zone.eks-muokata.zone_id
+  name     = "*.eks.muokata.net"
+  type     = "CNAME"
+  ttl      = "300"
+  records  = ["ab17dad8aeeb74abe94c1b77b688c7c6-145601780.us-east-1.elb.amazonaws.com"]
+}
