@@ -1,6 +1,7 @@
 module "eks" {
   source                       = "terraform-aws-modules/eks/aws"
   version                      = "~> 12.0.0"
+  cluster_version              = "1.16"
   cluster_name                 = "muokata-eks-${var.env}"
   subnets                      = module.vpc.private_subnets
   write_kubeconfig             = false
