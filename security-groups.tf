@@ -10,6 +10,7 @@ resource "aws_security_group" "elb_main_ingress" {
     cidr_blocks = [
       "65.95.237.148/32",
       "52.7.33.124/32",
+      "192.241.184.74/32",
     ]
   }
 
@@ -20,6 +21,7 @@ resource "aws_security_group" "elb_main_ingress" {
     cidr_blocks = [
       "65.95.237.148/32",
       "52.7.33.124/32",
+      "192.241.184.74/32",
     ]
   }
 
@@ -30,6 +32,7 @@ resource "aws_security_group" "elb_main_ingress" {
     cidr_blocks = [
       "65.95.237.148/32",
       "52.7.33.124/32",
+      "192.241.184.74/32",
     ]
   }
 
