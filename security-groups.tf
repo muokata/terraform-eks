@@ -1,3 +1,55 @@
+resource "aws_security_group" "elb_main_ingress" {
+  name        = "k8s-elb-ab17dad8aeeb74abe94c1b77b688c7c6"
+  description = "Security group for Kubernetes ELB ab17dad8aeeb74abe94c1b77b688c7c6 (ingress-nginx/ingress-nginx-controller)"
+  vpc_id      = module.vpc.vpc_id
+
+  ingress {
+    from_port = 80
+    to_port   = 80
+    protocol  = "tcp"
+    cidr_blocks = [
+      "65.95.237.148/32",
+      "52.7.33.124/32",
+    ]
+  }
+
+  ingress {
+    from_port = 443
+    to_port   = 443
+    protocol  = "tcp"
+    cidr_blocks = [
+      "65.95.237.148/32",
+      "52.7.33.124/32",
+    ]
+  }
+
+  ingress {
+    from_port = -1
+    to_port = -1
+    protocol = "icmp"
+    cidr_blocks = [
+      "65.95.237.148/32",
+      "52.7.33.124/32",
+    ]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name        = "muokata-eks-${var.env}-elb-main-ingress"
+    Environment = var.env
+		"kubernetes.io/cluster/muokata-eks-prod" = "owned"
+  }
+
+}
+
+
+
 resource "aws_security_group" "worker_group_mgmt_one" {
   name_prefix = "muokata-eks-${var.env}-worker_group_mgmt_one"
   description = "sec group for internal access to nodes in worker_group_mgmt_one"
