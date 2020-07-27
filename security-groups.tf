@@ -11,6 +11,8 @@ resource "aws_security_group" "elb_main_ingress" {
       "65.95.237.148/32",
       "52.7.33.124/32",
       "192.241.184.74/32",
+      "184.148.52.18/32",
+      "70.27.103.246/32",
     ]
   }
 
@@ -22,19 +24,42 @@ resource "aws_security_group" "elb_main_ingress" {
       "65.95.237.148/32",
       "52.7.33.124/32",
       "192.241.184.74/32",
+      "184.148.52.18/32",
+      "70.27.103.246/32",
     ]
   }
 
   ingress {
     from_port = -1
-    to_port = -1
-    protocol = "icmp"
+    to_port   = -1
+    protocol  = "icmp"
     cidr_blocks = [
       "65.95.237.148/32",
       "52.7.33.124/32",
       "192.241.184.74/32",
+      "184.148.52.18/32",
+      "70.27.103.246/32",
     ]
   }
+
+  ingress {
+    from_port = 9090
+    to_port   = 9090
+    protocol  = "tcp"
+    cidr_blocks = [
+      "65.95.237.148/32",
+      "52.7.33.124/32",
+      "192.241.184.74/32",
+      "184.148.52.18/32",
+      "70.27.103.246/32",
+    ]
+  }
+  #ingress {
+  #  from_port   = 0
+  #  to_port     = 0
+  #  protocol    = "-1"
+  #  cidr_blocks = ["0.0.0.0/0"]
+  #}
 
   egress {
     from_port   = 0
@@ -44,9 +69,9 @@ resource "aws_security_group" "elb_main_ingress" {
   }
 
   tags = {
-    Name        = "muokata-eks-${var.env}-elb-main-ingress"
-    Environment = var.env
-		"kubernetes.io/cluster/muokata-eks-prod" = "owned"
+    Name                                     = "muokata-eks-${var.env}-elb-main-ingress"
+    Environment                              = var.env
+    "kubernetes.io/cluster/muokata-eks-prod" = "owned"
   }
 
 }
@@ -120,14 +145,14 @@ resource "aws_security_group" "bastion-client-eks" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["67.71.177.28/32", "67.71.23.171/32", "165.22.226.153/32"]
+    cidr_blocks = ["67.71.177.28/32", "67.71.23.171/32", "165.22.226.153/32", "184.148.52.18/32", "70.27.103.246/32"]
   }
 
   ingress {
     from_port   = 5820
     to_port     = 5820
     protocol    = "tcp"
-    cidr_blocks = ["67.71.177.28/32", "67.71.23.171/32", "165.22.226.153/32"]
+    cidr_blocks = ["67.71.177.28/32", "67.71.23.171/32", "165.22.226.153/32", "184.148.52.18/32", "70.27.103.246/32"]
   }
 
   egress {
