@@ -8,7 +8,7 @@ module "eks" {
   manage_worker_iam_resources  = false
   manage_cluster_iam_resources = false
   cluster_iam_role_name        = aws_iam_role.muokata-eks-master-role.name
-  cluster_enabled_log_types    = ["api", "audit", "authenticator", "controllerManager", "scheduler"]
+  #cluster_enabled_log_types    = ["api", "audit", "authenticator", "controllerManager", "scheduler"]
 
   tags = {
     Environment = var.env
