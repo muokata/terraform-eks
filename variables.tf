@@ -9,7 +9,7 @@ variable "aws_region" {
 }
 
 variable "env" {
-  default = "prod"
+  default = "dev"
 }
 
 variable "server_count" {

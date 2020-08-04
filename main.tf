@@ -12,7 +12,7 @@ resource "aws_instance" "bastion" {
   instance_type               = "t3.micro"
 
   root_block_device {
-    volume_size = 40
+    volume_size = 20
   }
 
   tags = {
