@@ -2,7 +2,7 @@ Host bastion-eks-dev-0
   Port 22
   user ubuntu
   IdentityFile ~/SSHKEYS/k8s.pem
-  Hostname  %h.eks.muokata.net
+  Hostname  %h.dev.eks.muokata.net
 
 Host *.internal
   User ec2-user
