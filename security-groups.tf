@@ -75,9 +75,9 @@ resource "aws_security_group" "elb_main_ingress" {
   }
 
   tags = {
-    Name                                     = "muokata-eks-${var.env}-elb-main-ingress"
-    Environment                              = var.env
-    "kubernetes.io/cluster/muokata-eks-prod" = "owned"
+    Name                                    = "muokata-eks-${var.env}-elb-main-ingress"
+    Environment                             = var.env
+    "kubernetes.io/cluster/muokata-eks-dev" = "owned"
   }
 
 }
