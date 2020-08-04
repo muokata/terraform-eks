@@ -2,7 +2,7 @@ Host bastion-eks-prod-0
   Port 5820
   user ubuntu
   IdentityFile ~/SSHKEYS/k8s.pem
-  Hostname  %h.eks.muokata.net
+  Hostname  %h.prod.eks.muokata.net
 
 Host *.internal
   User ec2-user
