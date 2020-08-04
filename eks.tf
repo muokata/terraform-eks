@@ -25,7 +25,7 @@ module "eks" {
       asg_min_size                  = 3
       asg_max_size                  = 5
       root_volume_size              = "50"
-      kubelet_extra_args            = "--node-labels=function=apps"
+      kubelet_extra_args            = "--node-labels=service=apps"
       additional_security_group_ids = [aws_security_group.worker_group_mgmt_one.id, aws_security_group.all_worker_mgmt.id]
       key_name                      = var.aws_key_name
       public_ip                     = false
