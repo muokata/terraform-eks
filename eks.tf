@@ -5,8 +5,9 @@ module "eks" {
   cluster_name                 = "muokata-eks-${var.env}"
   subnets                      = module.vpc.private_subnets
   write_kubeconfig             = false
-  manage_worker_iam_resources  = true
-  manage_cluster_iam_resources = true
+  manage_worker_iam_resources  = false
+  manage_cluster_iam_resources = false
+  cluster_iam_role_name        = aws_iam_role.muokata-eks-master-role.name
   #cluster_enabled_log_types    = ["api", "audit", "authenticator", "controllerManager", "scheduler"]
 
   tags = {
@@ -17,12 +18,14 @@ module "eks" {
 
   worker_groups = [
     {
-      name          = "worker-group-1"
-      instance_type = "t3a.medium"
+      name                          = "worker-group-1"
+      instance_type                 = "t3a.medium"
+      iam_instance_profile_name     = aws_iam_instance_profile.muokata-eks-worker-profile.name
       asg_desired_capacity          = 3
       asg_min_size                  = 3
       asg_max_size                  = 5
       root_volume_size              = "50"
+      kubelet_extra_args            = "--node-labels=function=apps"
       additional_security_group_ids = [aws_security_group.worker_group_mgmt_one.id, aws_security_group.all_worker_mgmt.id]
       key_name                      = var.aws_key_name
       public_ip                     = false
@@ -40,8 +43,9 @@ module "eks" {
       ]
     },
     {
-      name          = "worker-group-2"
-      instance_type = "t3a.medium"
+      name                          = "worker-group-2"
+      instance_type                 = "t3a.medium"
+      iam_instance_profile_name     = aws_iam_instance_profile.muokata-eks-worker-profile.name
       asg_desired_capacity          = 0
       asg_min_size                  = 0
       asg_max_size                  = 0
