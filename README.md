@@ -1,4 +1,4 @@
-# Cover Terrafrom EKS 
+# Muokata Terrafrom EKS
 
 ## Setup
 
