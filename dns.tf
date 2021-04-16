@@ -66,10 +66,10 @@ resource "aws_route53_record" "prod-eks-muokata-ns" {
   ttl      = "30"
 
   records = [
-    "${aws_route53_zone.prod-eks-muokata.name_servers.0}",
-    "${aws_route53_zone.prod-eks-muokata.name_servers.1}",
-    "${aws_route53_zone.prod-eks-muokata.name_servers.2}",
-    "${aws_route53_zone.prod-eks-muokata.name_servers.3}",
+    aws_route53_zone.prod-eks-muokata.name_servers.0,
+    aws_route53_zone.prod-eks-muokata.name_servers.1,
+    aws_route53_zone.prod-eks-muokata.name_servers.2,
+    aws_route53_zone.prod-eks-muokata.name_servers.3,
   ]
 }
 

@@ -1,3 +1,4 @@
+/*
 ###############################
 #### Cluster Master policy ####
 ###############################
@@ -112,3 +113,4 @@ resource "aws_iam_role_policy_attachment" "muokata-eks-worker-cni" {
   role       = aws_iam_role.muokata-eks-worker-role.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"
 }
+*/

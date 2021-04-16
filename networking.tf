@@ -4,7 +4,7 @@ locals {
 
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
-  version = "~> 2.44.0"
+  version = "~> 2.78.0"
 
   name = "vpc-eks-${var.env}"
   cidr = "10.0.0.0/16"
@@ -19,7 +19,7 @@ module "vpc" {
 
   tags = {
     Terraform                                     = "true"
-    Environment                                   = "${var.env}"
+    Environment                                   = var.env
     "kubernetes.io/cluster/${local.cluster_name}" = "shared"
   }
 
