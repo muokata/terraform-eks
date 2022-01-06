@@ -1,6 +1,6 @@
 module "eks" {
   source                       = "terraform-aws-modules/eks/aws"
-  version                      = "~> 14.0.0"
+  version                      = "~> 18.0.0"
   cluster_version              = var.cluster_version
   cluster_name                 = "muokata-eks-${var.env}"
   subnets                      = module.vpc.private_subnets
